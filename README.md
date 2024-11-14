@@ -1,4 +1,4 @@
-#Ratings Project
+# Ratings Project
 
 This project allows users to rate their experiences, which are then stored in a SQlite database. An admin page allows administrators to view all the ratings submitted by users.
 
