@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <!-- Link to Bootstrap for layout support -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJf+DQJri4a2SKkjf7r54/VOChw6wJ13VbfaDquS94gBzslyZBNT2gZyVrHp" crossorigin="anonymous">
+    <!-- Link to Font Awesome for Sun and Moon icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f8f9fa;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: #333;
+            color: #f7f9f9;
+        }
+
+        .card {
+            width: 18rem;
+            background-color: #f7f9f9;
+            border-radius: 16px;
+            padding: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            text-align: center;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Dark Mode Card */
+        .card.dark-mode {
+            background-color: #444;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .card__title {
+            font-size: 1.4em;
+            font-weight: 800;
+            color: #333;
+        }
+
+        /* Dark Mode Title */
+        .card.dark-mode .card__title {
+            color: #f7f9f9;
+        }
+
+        .card__text {
+            font-weight: 500;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Dark Mode Text */
+        .card.dark-mode .card__text {
+            color: #e1e1e1;
+        }
+
+        /* Simple Sun and Moon Icons Toggle */
+        .toggle-icons {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .toggle-icons i {
+            transition: color 0.3s ease;
+        }
+
+        /* Hide the sun icon in dark mode */
+        .toggle-icons .moon-icon {
+            color: #f5f5f5; /* Light mode color */
+        }
+
+        .toggle-icons .sun-icon {
+            color: #f5b342; /* Sun color */
+        }
+
+        body.dark-mode .toggle-icons .moon-icon {
+            color: #f5b342; /* Sun color in dark mode */
+        }
+
+        body.dark-mode .toggle-icons .sun-icon {
+            color: transparent; /* Hide the sun icon in dark mode */
+        }
+
+        /* Custom Button Styles */
+        .button2 {
+            display: inline-block;
+            transition: all 0.2s ease-in;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            color: #090909;
+            padding: 0.7em 1.7em;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 0.5em;
+            background: #e8e8e8;
+            border: 1px solid #e8e8e8;
+            box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+        }
+
+        .button2:active {
+            color: #666;
+            box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
+        }
+
+        .button2:before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%) scaleY(1) scaleX(1.25);
+            top: 100%;
+            width: 140%;
+            height: 180%;
+            background-color: rgba(0, 0, 0, 0.05);
+            border-radius: 50%;
+            display: block;
+            transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+            z-index: -1;
+        }
+
+        .button2:after {
+            content: "";
+            position: absolute;
+            left: 55%;
+            transform: translateX(-50%) scaleY(1) scaleX(1.45);
+            top: 180%;
+            width: 160%;
+            height: 190%;
+            background-color: #0066cc; /* Blue color */
+            border-radius: 50%;
+            display: block;
+            transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+            z-index: -1;
+        }
+
+        .button2:hover {
+            color: #ffffff;
+            border: 1px solid #0066cc; /* Blue color */
+        }
+
+        .button2:hover:before {
+            top: -35%;
+            background-color: #0066cc; /* Blue color */
+            transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+        }
+
+        .button2:hover:after {
+            top: -45%;
+            background-color: #0066cc; /* Blue color */
+            transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+        }
+        a {
+            text-decoration: none;
+        }
+        
+    </style>
+</head>
+<body>
+
+  
+    <div class="toggle-icons">
+        <i class="fas fa-sun sun-icon"></i>
+        <i class="fas fa-moon moon-icon"></i>
+    </div>
+
+  
+    <div class="card">
+        <div class="card-body">
+            <span class="card__title">Welcome to Station-S</span>
+            <p class="card__text">Rate your experience in Station-S</p>
+          
+            <a href="{% url 'rating' %}" class="button2">Rate Now</a>
+        </div>
+    </div>
+
+ 
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybTQ7Tg3zHJzpkWn2uDrj7zzB3hB9HBaVkXzq3Jc6N6VAdLml5" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0hWVvbbge8lPgnrZXaK3BdpLPRvN5H1Wy8Zf6gMk0uPi+P4r" crossorigin="anonymous"></script>
+
+    <script>
+       
+        const toggleIcons = document.querySelector('.toggle-icons');
+        toggleIcons.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+    </script>
+
+</body>
+</html>
